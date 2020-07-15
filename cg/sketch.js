@@ -4,11 +4,11 @@ let end = [];
 var state= '';
 
 let col = {
-	'START':color(100, 100, 0),
-	'END': color(0, 100, 50),
-	'YMX': color(255, 0, 0),
-	'DDA': color(0, 255, 0),
-	'BRE': color(0, 0, 255),
+	'START':p5.Color(100, 100, 0),
+	'END': p5.Color(0, 100, 50),
+	'YMX': p5.Color(255, 0, 0),
+	'DDA': p5.Color(0, 255, 0),
+	'BRE': p5.Color(0, 0, 255),
 }
 
 function ymx(x1, y1, x2, y2){
