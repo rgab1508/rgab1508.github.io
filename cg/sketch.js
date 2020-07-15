@@ -66,8 +66,8 @@ function mousePressed(){
       grid.pixels[pp[0]][pp[1]].col = col['END'];
     }
   }
-  console.log('start', start);
-  console.log('end', end);
+  console.log('start'+ start);
+  console.log('end'+ end);
 }
 
 
