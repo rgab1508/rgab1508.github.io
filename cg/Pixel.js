@@ -10,7 +10,7 @@ class Pixel {
 		fill(this.col);
 		rect(this.x, this.y, this.w, this.w);
 	}
-  
+
 	onClick(mx,my){
 		if(mx>= this.x && mx <= (this.x+this.w)&& my >=this.y && my <= (this.y+this.w)){
 			this.col = 0;
