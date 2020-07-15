@@ -3,18 +3,12 @@ let start=[];
 let end = [];
 var state= '';
 
-let col = {
-	'START':p5.Color(100, 100, 0),
-	'END': p5.Color(0, 100, 50),
-	'YMX': p5.Color(255, 0, 0),
-	'DDA': p5.Color(0, 255, 0),
-	'BRE': p5.Color(0, 0, 255),
-}
+let col; 
 
 function ymx(x1, y1, x2, y2){
-   let points = [];
+  let points = [];
   let m = (y2 - y1)/(x2-x1);
- let b = y1 - m*x1;
+  let b = y1 - m*x1;
  
   for(let x=x1;x<=x2;x++){
     let y = m*x + b;
@@ -38,6 +32,22 @@ function calculateLine(){
 
 
 function setup(){
+ /* 
+  col =  {
+     'START': p5.Color(100, 100, 0),
+     'END': p5.Color(0, 100, 50),
+     'YMX': p5.Color(255, 0, 0),
+     'DDA': p5.Color(0, 255, 0),
+     'BRE': p5.Color(0, 0, 255),
+   }
+  */
+  col =  {
+     'START': color(100, 100, 0), 
+     'END': color(0, 100, 50),
+     'YMX': color(255, 0, 0),
+     'DDA': color(0, 255, 0),
+     'BRE': color(0, 0, 255),
+   }
   createCanvas(600, 600);
   grid = new Grid(10, width, height);
   grid.init();
