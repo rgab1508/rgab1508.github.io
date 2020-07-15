@@ -3,6 +3,10 @@ let start=[];
 let end = [];
 var state= '';
 
+let ymxCheckVal = true;
+let ddaCheckVal = false;
+let breCheckVal = false;
+
 let col; 
 
 function ymx(x1, y1, x2, y2){
@@ -57,8 +61,29 @@ function setup(){
   console.log(state);
   let sButton = createButton('start point');
   let eButton = createButton('end Point');
-  sButton.mousePressed(function(){state='START'});
+  sButton.mousePressed(function(){
+    state='START'
+    grid.show();
+  });
   eButton.mousePressed(function(){state='END'});
+  
+  let ymxCheck = createCheckbox('Slope Intercept form(y=mx+b) ', ymxCheckVal);
+  let ddaCheck = createCheckbox('DDA method', ddaCheckVal);
+  let breCheck = createCheckbox('Bre method', breCheckVal);
+  ymxCheck.changed(() => {
+    if(this.checked()){
+      ymxCheckVal = true
+    }else{ymxCheckVal = false;}
+ });
+  
+  ddaCheck.changed(()=>{
+    if(this.checked()) ddaCheckVal = true;
+    else {ddaCheckVal = false;} 
+  });
+  breCheck.changed(() => {
+    if (this.checked()) breCheckVal = true;
+    else { breCheckVal = false; }
+  })
 }
 
 
