@@ -1,43 +1,63 @@
-class Pixel {
-	constructor(x, y, w){
-		this.x = x;
-		this.y = y;
-		this.w = w;
-	}
+let grid;
+let start=[];
+let end = [];
+var state= '';
 
-	show(){
-		fill(150);
-		rect(this.x, this.y, this.w, this.w);
-	}
+
+
+function ymx(x1, y1, x2, y2){
+  let points = [];
+  let m = (y2 - y1)/(x2-x1);
+  let b = y1 - m*x1;
+  
+  for(let x=x1;x<=x2;x++){
+    let y = m*x + b;
+    points.push([Math.ceil(x), Math.ceil(y)]);
+  }
+  return points;
 }
 
-class Grid {
-	constructor(n, w, h){
-		this.n = n;
-		this.w = w;
-		this.h = h;
-		this.step = w/n;
-	}
-	show(){
-		for(let i=0;i<this.h;i+=this.step){
-			for(let j=0;j<this.w;j+=this.step){
-				let p = Pixel(i, j, this.step);
-				p.show();
-			}
-		}
-	}
+
+
+
+function calculateLine(){
+  let points = ymx(start[0],start[1], end[0], end[1]);
+  for(let i=0;i<points.length;i++){
+    let el = points[i];
+    grid.pixels[el[0]][el[1]].col = 0;
+  }
 }
+
+
 
 function setup(){
-	createCanvas(600,600);
-	//let grid = Grid(10, width,height);
-//	background(51);
-	//grid.show();
+  createCanvas(600, 600);
+  grid = new Grid(10, width, height);
+  grid.init();
+  let b = createButton('Calculate' );
+  b.mousePressed(calculateLine);
+  state = 'START';
+  console.log(state)
 }
 
+
+
+function mousePressed(){
+  let pp = grid.mPressed(mouseX, mouseY);
+  
+  if(pp[0]!= -1){
+    if(state == 'START'){
+      start = pp;
+      state = 'END';
+    }else if(state == 'END'){
+      end = pp;
+    }
+  }
+  console.log('start', start);
+  console.log('end', end);
+}
 
 
 function draw(){
-	rect(50,50, 50, 50);
-	background(51);
+  grid.show();
 }
