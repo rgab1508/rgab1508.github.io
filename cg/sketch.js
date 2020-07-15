@@ -48,7 +48,7 @@ function setup(){
   let sButton = createButton('start point');
   let eButton = createButton('end Point');
   sButton.mousePressed(function(){state='START'});
-  eButton.nousePressed(function(){state='END'});
+  eButton.mousePressed(function(){state='END'});
 }
 
 
