@@ -8,6 +8,7 @@ class Pixel {
 
 	show(){
 		fill(this.col);
+		stroke(150, 150)
 		rect(this.x, this.y, this.w, this.w);
 	}
 

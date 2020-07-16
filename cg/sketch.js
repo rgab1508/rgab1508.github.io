@@ -51,6 +51,7 @@ function dda(x1, y1, x2, y2){
     x += Xinc;
     y += Yinc;
   }
+  points.push([x2, y2]);
   console.log(steps);
   console.log(points);
   /*for(let i=0;i<points.length;i++){
@@ -95,9 +96,9 @@ function setup(){
   col =  {
      'START': color(100, 100, 0), 
      'END': color(0, 100, 50),
-     'YMX': color(255, 0, 0),
-     'DDA': color(0, 255, 0),
-     'BRE': color(0, 0, 255),
+     'YMX': color(255, 0, 0, 100),
+     'DDA': color(0, 255, 0, 100),
+     'BRE': color(0, 0, 255, 100),
    }
   createCanvas(600, 600);
   grid = new Grid(10, width, height);
@@ -141,7 +142,7 @@ function mousePressed(){
   if(pp[0]!= -1){
     if(state == 'START'){
       start = pp;
-      state = 'END';
+      
       grid.pixels[pp[0]][pp[1]].col = col['START'];
     }else if(state == 'END'){
       end = pp;
