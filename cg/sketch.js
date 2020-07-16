@@ -11,8 +11,6 @@ let col;
 
 
 
-
-
 function calculateLine(){
   
   if(ymxCheckVal){
@@ -37,21 +35,12 @@ function calculateLine(){
 
 
 function setup(){
- /* 
-  col =  {
-     'START': p5.Color(100, 100, 0),
-     'END': p5.Color(0, 100, 50),
-     'YMX': p5.Color(255, 0, 0),
-     'DDA': p5.Color(0, 255, 0),
-     'BRE': p5.Color(0, 0, 255),
-   }
-  */
   col =  {
      'START': color(100, 100, 0), 
      'END': color(0, 100, 50),
-     'YMX': color(255, 0, 0, 100),
-     'DDA': color(0, 255, 0, 100),
-     'BRE': color(0, 0, 255, 100),
+     'YMX': color(255, 0, 0),
+     'DDA': color(0, 255, 0),
+     'BRE': color(0, 0, 255),
    }
   createCanvas(600, 600);
   grid = new Grid(10, width, height);
