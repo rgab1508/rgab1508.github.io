@@ -10,56 +10,6 @@ let breCheckVal = false;
 let col; 
 
 
-function ymx(x1, y1, x2, y2){
-  let points = [];
-  let m = (y2 - y1)/(x2-x1);
-  let b = y1 - m*x1;
- 
-  for(let x=x1;x<=x2;x++){
-    let y = m*x + b;
-    points.push([Math.round(x), Math.round(y)]);
-  }
-  return points;
-}
-
-
-function dda(x1, y1, x2, y2){
-  let points = [];
-  let dx = (x2-x1);
-  let dy = (y2-y1);
-  let steps = 1;
-  if(Math.abs(dx)>Math.abs(dy)){
-    steps = Math.abs(dx);
-  }else{
-    steps =Math.abs(dy);
-  }
-  let Xinc = dx/steps;
-  let Yinc = dy/steps;
-  //points.push([x1, y1]);
-  /*
-  for(let i=0;i<steps;i++){
-    let x = points[i][0]+Xinc;
-    let y = points[i][1]+Yinc;
-    points.push([Math.round(x), Math.round(y)]);
-  }
-  */
-  let x = x1;
-  let y = y1;
-  while(x < x2 && y < y2){
-    
-    points.push([Math.round(x), Math.round(y)]);
-    x += Xinc;
-    y += Yinc;
-  }
-  points.push([x2, y2]);
-  console.log(steps);
-  console.log(points);
-  /*for(let i=0;i<points.length;i++){
-    console.log('x: ', points[i][0]);
-    console.log('y: ', points[i][0]);
-  }*/
-  return points;
-}
 
 
 
@@ -74,6 +24,9 @@ function calculateLine(){
   }else if(ddaCheckVal){
     let points = dda(start[0],start[1], end[0], end[1]);
     for(let i=0;i<points.length;i++){
+      console.log(i, 'no error');
+      console.log(points);
+      
       let el = points[i];
       grid.pixels[el[0]][el[1]].col = col['DDA'];
     }
@@ -142,7 +95,7 @@ function mousePressed(){
   if(pp[0]!= -1){
     if(state == 'START'){
       start = pp;
-      
+      state = 'END';
       grid.pixels[pp[0]][pp[1]].col = col['START'];
     }else if(state == 'END'){
       end = pp;
