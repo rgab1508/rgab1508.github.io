@@ -32,6 +32,15 @@ class Grid {
 			}
 		}
 	}
+	
+	clear(){
+	  for(let i=0;i<this.pixels.length;i++){
+			for(let j=0;j<this.pixels[0].length;j++){
+				this.pixels[i][j].col = 230;
+				this.pixels[i][j].show();
+			}
+		}
+	}
 
 	mPressed(mx, my){
 		for(let i=0;i<this.pixels.length;i++){
