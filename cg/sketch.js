@@ -28,6 +28,14 @@ function calculateLine(){
       let el = points[i];
       grid.pixels[el[0]][el[1]].col = col['DDA'];
     }
+  }else if (breCheckVal) {
+    let points = bre(start[0], start[1], end[0], end[1]);
+    for (let i = 0; i < points.length; i++) {
+    
+  
+      let el = points[i];
+      grid.pixels[el[0]][el[1]].col = col['BRE'];
+    }
   }
 }
 
@@ -88,6 +96,7 @@ function mousePressed(){
       grid.pixels[pp[0]][pp[1]].col = col['START'];
     }else if(state == 'END'){
       end = pp;
+     
       grid.pixels[pp[0]][pp[1]].col = col['END'];
     }
   }
