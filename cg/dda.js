@@ -46,4 +46,4 @@ function dda(x1, y1, x2, y2) {
   return points;
 }
 
-console.log(dda(1,1, 6, 7));
+//console.log(dda(1,1, 6, 7));
