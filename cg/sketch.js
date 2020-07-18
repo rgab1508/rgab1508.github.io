@@ -22,7 +22,9 @@ function calculateLine(){
   ddaPoints = dda(start[0],start[1], end[0], end[1]);
   
   brePoints = bre(start[0], start[1], end[0], end[1]);
-
+  console.log(ymxPoints);
+  console.log(ddaPoints);
+  console.log(brePoints);
 }
 
 
@@ -32,17 +34,20 @@ function renderPoints(){
     for (let i = 0; i < ymxPoints.length; i++) {
       let el = ymxPoints[i];
       grid.pixels[el[0]][el[1]].col = col['YMX'];
+    } 
   }
   if(ddaCheckVal){
     for (let i = 0; i < ddaPoints.length; i++) {
     
       let el = ddaPoints[i];
       grid.pixels[el[0]][el[1]].col = col['DDA'];
+    } 
   }
   if(breCheckVal){
     for (let i = 0; i < brePoints.length; i++) {
       let el = brePoints[i];
       grid.pixels[el[0]][el[1]].col = col['BRE'];
+    } 
   }
 }
 
@@ -97,7 +102,7 @@ function setup(){
     } 
     else { breCheckVal = false; }
     renderPoints();
-  })
+  });
 }
 
 
