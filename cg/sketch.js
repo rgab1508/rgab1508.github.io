@@ -14,8 +14,10 @@ let breCheckVal = false;
 let col; 
 
 function createPointsTable(){
-  let ymxTab = createElement('table');
-  
+  //let ymxTab = createElement('table');
+  let ptTdDiv = select('#pt_tb_div');
+  let ymxTb = createElement('table');
+  console.log(ymxTb);
 }
 
 function calculateLine(){
@@ -56,27 +58,39 @@ function renderPoints(){
   }
 }
 
+function createMatCheckBox(lab){
+  let label = createElement('label');
+  //let span = createElement('span');
+  //span.innerHtml = lab;
+  let span = createSpan(lab);
+  span.parent(label);
+  //let checkB = createCheckbox();
+  let checkB = createInput('', 'checkbox');
+  //input.attribute('type','checkbox');
+  checkB.attribute('checked', 'checked');
+  checkB.parent(label);
+  return label;
+}
 
-
-
-function setup(){
-  col =  {
-     'START': color(100, 100, 0), 
-     'END': color(0, 100, 50),
-     'YMX': color(255, 0, 0),
-     'DDA': color(0, 255, 0),
-     'BRE': color(0, 0, 255),
-   }
-  createCanvas(600, 600);
-  grid = new Grid(10, width, height);
-  grid.init();
-  let b = createButton('Calculate' );
+function createUI(){
+    let b = createButton('Calculate' );
   b.mousePressed(calculateLine);
+  let uiDiv = select('.ui_div');
   state = 'START';
-  console.log(state);
+  b.addClass('btn');
+  b.parent(uiDiv);
   let sButton = createButton('start point');
+  sButton.addClass('btn');
+  sButton.parent(uiDiv);
+  
   let eButton = createButton('end Point');
+  eButton.addClass('btn');
+  eButton.parent(uiDiv);
+  
+  
   let clearButton = createButton('Clear');
+  clearButton.addClass('btn');
+  clearButton.parent(uiDiv);
   sButton.mousePressed(function(){
     state='START'
     grid.show();
@@ -85,8 +99,10 @@ function setup(){
   clearButton.mousePressed(function(){
     grid.clear();
   });
-  
+  let cc = createMatCheckBox('bro');
+  cc.parent(uiDiv);
   let ymxCheck = createCheckbox('Slope Intercept form(y=mx+b) ', ymxCheckVal);
+  ymxCheck.addClass('filled-in');
   let ddaCheck = createCheckbox('DDA method', ddaCheckVal);
   let breCheck = createCheckbox('Bre method', breCheckVal);
   ymxCheck.changed(function() {
@@ -98,7 +114,6 @@ function setup(){
     }
     renderPoints();
  });
-  
   ddaCheck.changed(function(){
     if(this.checked()) {ddaCheckVal = true;
     } 
@@ -112,6 +127,24 @@ function setup(){
     else { breCheckVal = false; }
     renderPoints();
   });
+}
+
+
+function setup(){
+  col =  {
+     'START': color(100, 100, 0), 
+     'END': color(0, 100, 50),
+     'YMX': color(255, 0, 0),
+     'DDA': color(0, 255, 0),
+     'BRE': color(0, 0, 255),
+   }
+  let myCanvas = createCanvas(600, 600);
+  let cnsDiv = select('.cns_div');
+  myCanvas.parent(cnsDiv);
+  grid = new Grid(10, width, height);
+  grid.init();
+  
+  createUI();
 }
 
 
