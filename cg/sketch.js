@@ -13,7 +13,10 @@ let breCheckVal = false;
 
 let col; 
 
-
+function createPointsTable(){
+  let ymxTab = createElement('table');
+  
+}
 
 function calculateLine(){
   
@@ -25,6 +28,8 @@ function calculateLine(){
   console.log(ymxPoints);
   console.log(ddaPoints);
   console.log(brePoints);
+  
+  createPointsTable();
 }
 
 
@@ -71,11 +76,15 @@ function setup(){
   console.log(state);
   let sButton = createButton('start point');
   let eButton = createButton('end Point');
+  let clearButton = createButton('Clear');
   sButton.mousePressed(function(){
     state='START'
     grid.show();
   });
   eButton.mousePressed(function(){state='END'});
+  clearButton.mousePressed(function(){
+    grid.clear();
+  });
   
   let ymxCheck = createCheckbox('Slope Intercept form(y=mx+b) ', ymxCheckVal);
   let ddaCheck = createCheckbox('DDA method', ddaCheckVal);

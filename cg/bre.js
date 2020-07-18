@@ -1,4 +1,4 @@
-function bre(x1, y1, x2, y2){
+function preBre(x1, y1, x2, y2){
   let points = [];
   let dx = x2 - x1;
   let dy = y2 - y1;
@@ -17,3 +17,29 @@ function bre(x1, y1, x2, y2){
 }
 
 //console.log(bre(1, 1, 5, 5));
+
+function bre(x1, y1, x2, y2){
+  let points = [];
+  let dx = Math.abs(x2 - x1);
+  let sx = x1 < x2 ? 1 : -1;
+  let dy = - Math.abs(y2 - y1);
+  let sy = y1 < y2? 1: - 1;
+  let err = dx + dy;
+  
+  while(true){
+    points.push([x1, y1]);
+    if(x1 == x2 && y1 == y2){
+      break;
+    }
+    let e2 = 2*err;
+    if (e2 >= dy) {
+      err += dy;
+      x1 += sx;
+    } 
+    if (e2 <= dx){
+      err += dx;
+      y1 += sy;
+    } 
+  }
+  return points;
+}
