@@ -7,8 +7,8 @@ let ymxPoints = [];
 let ddaPoints = [];
 let brePoints = [];
 
-let ymxCheckVal = false;
-let ddaCheckVal = true;
+let ymxCheckVal = true;
+let ddaCheckVal = false;
 let breCheckVal = false;
 
 let col; 
@@ -31,7 +31,8 @@ function calculateLine(){
   console.log(ddaPoints);
   console.log(brePoints);
   
-  createPointsTable();
+  
+  renderPoints();
 }
 
 
@@ -56,21 +57,10 @@ function renderPoints(){
       grid.pixels[el[0]][el[1]].col = col['BRE'];
     } 
   }
+ // renderPoints();
 }
 
-function createMatCheckBox(lab){
-  let label = createElement('label');
-  //let span = createElement('span');
-  //span.innerHtml = lab;
-  let span = createSpan(lab);
-  span.parent(label);
-  //let checkB = createCheckbox();
-  let checkB = createInput('', 'checkbox');
-  //input.attribute('type','checkbox');
-  checkB.attribute('checked', 'checked');
-  checkB.parent(label);
-  return label;
-}
+
 
 function createUI(){
     let b = createButton('Calculate' );
@@ -78,18 +68,23 @@ function createUI(){
   let uiBtnDiv = select('.ui_btn_div');
   state = 'START';
   b.addClass('btn');
+  b.addClass('black');
+  
   b.parent(uiBtnDiv);
   let sButton = createButton('start point');
   sButton.addClass('btn');
   sButton.parent(uiBtnDiv);
+    sButton.addClass('black');
   
   let eButton = createButton('end Point');
   eButton.addClass('btn');
+  eButton.addClass('black');
   eButton.parent(uiBtnDiv);
   
   
   let clearButton = createButton('Clear');
   clearButton.addClass('btn');
+  clearButton.addClass('black');
   clearButton.parent(uiBtnDiv);
   sButton.mousePressed(function(){
     state='START'
@@ -101,49 +96,24 @@ function createUI(){
   });
   
   let ymxCheck = document.getElementById('ymxCheck');
+  ymxCheck.checked = ymxCheckVal? 'checked': '';
+  
   ymxCheck.onclick = function(){
     ymxCheckVal = this.checked;
     renderPoints();
   }
   let ddaCheck = document.getElementById('ddaCheck');
+  ddaCheck.checked = ddaCheckVal? 'checked': '';
   ddaCheck.onclick = function(){
     ddaCheckVal = this.checked;
     renderPoints();
   }
   let breCheck = document.getElementById('breCheck');
+  breCheck.checked = breCheckVal? 'checked':'';
   breCheck.onclick= function(){
     breCheckVal = this.checked;
     renderPoints();
   }
-  /*
-  let cc = createMatCheckBox('bro');
-  cc.parent(uiDiv);
-  let ymxCheck = createCheckbox('Slope Intercept form(y=mx+b) ', ymxCheckVal);
-  ymxCheck.addClass('filled-in');
-  let ddaCheck = createCheckbox('DDA method', ddaCheckVal);
-  let breCheck = createCheckbox('Bre method', breCheckVal);
-  ymxCheck.changed(function() {
-    if(this.checked()){
-      ymxCheckVal = true
-    }else{
-      ymxCheckVal = false;
-      
-    }
-    renderPoints();
- });
-  ddaCheck.changed(function(){
-    if(this.checked()) {ddaCheckVal = true;
-    } 
-    else {ddaCheckVal = false;} 
-    renderPoints();
-  });
-  breCheck.changed(function() {
-    if (this.checked()) {
-      breCheckVal = true;
-    } 
-    else { breCheckVal = false; }
-    renderPoints();
-  });*/
 }
 
 
