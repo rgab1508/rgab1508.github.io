@@ -75,22 +75,22 @@ function createMatCheckBox(lab){
 function createUI(){
     let b = createButton('Calculate' );
   b.mousePressed(calculateLine);
-  let uiDiv = select('.ui_div');
+  let uiBtnDiv = select('.ui_btn_div');
   state = 'START';
   b.addClass('btn');
-  b.parent(uiDiv);
+  b.parent(uiBtnDiv);
   let sButton = createButton('start point');
   sButton.addClass('btn');
-  sButton.parent(uiDiv);
+  sButton.parent(uiBtnDiv);
   
   let eButton = createButton('end Point');
   eButton.addClass('btn');
-  eButton.parent(uiDiv);
+  eButton.parent(uiBtnDiv);
   
   
   let clearButton = createButton('Clear');
   clearButton.addClass('btn');
-  clearButton.parent(uiDiv);
+  clearButton.parent(uiBtnDiv);
   sButton.mousePressed(function(){
     state='START'
     grid.show();
@@ -99,6 +99,23 @@ function createUI(){
   clearButton.mousePressed(function(){
     grid.clear();
   });
+  
+  let ymxCheck = document.getElementById('ymxCheck');
+  ymxCheck.onclick = function(){
+    ymxCheckVal = this.checked;
+    renderPoints();
+  }
+  let ddaCheck = document.getElementById('ddaCheck');
+  ddaCheck.onclick = function(){
+    ddaCheckVal = this.checked;
+    renderPoints();
+  }
+  let breCheck = document.getElementById('breCheck');
+  breCheck.onclick= function(){
+    breCheckVal = this.checked;
+    renderPoints();
+  }
+  /*
   let cc = createMatCheckBox('bro');
   cc.parent(uiDiv);
   let ymxCheck = createCheckbox('Slope Intercept form(y=mx+b) ', ymxCheckVal);
@@ -126,7 +143,7 @@ function createUI(){
     } 
     else { breCheckVal = false; }
     renderPoints();
-  });
+  });*/
 }
 
 
