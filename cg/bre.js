@@ -43,3 +43,16 @@ function bre(x1, y1, x2, y2) {
   }
   return points;
 }
+
+function tBre(x1, y1, x2, y2){
+  let points = [];
+  return points;
+}
+
+function test(){
+  let points = bre(1,1,8,5);
+  console.log(points );
+  
+}
+
+test();
