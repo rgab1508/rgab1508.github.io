@@ -4,10 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
     <script src="libs/p5.min.js"></script>
   <title>Computer Graphics</title>
 </head>
 <body>
+  <!--
+  <div >
+    <table id="pt_tb" border="1">
+      <tr>
+        <th>Steps</th>
+        <th>X cord</th>
+        <th>Y cord</th>
+      </tr>
+    </table>
+  </div>
+  -->
+  <div class="cns_div"></div>
+  <br/>
+  <br/>
+  
+  <div class="ui_div">
+    <div class="ui_btn_div"></div>
+    <p>
+      <label>
+        <input type="checkbox" class="filled-in" id="ymxCheck"/>
+        <span>Slope Intercept form(y=mx+b) </span>
+      </label>
+    </p>
+        <p>
+      <label>
+        <input type="checkbox" class="filled-in" id="ddaCheck"/>
+        <span>DDA Algorithm</span>
+      </label>
+    </p>
+        <p>
+          <label>
+            <input type="checkbox" class="filled-in" id="breCheck" />
+            <span>Bresenham's Algorithn</span>
+          </label>
+        </p>
+    <!--<input type="button" value="Calculate" class="btn">-->
+  </div>
+  
+  <div class="pt_tb_div"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="Pixel.js"></script>
   <script src="Grid.js"></script>
   <script src="ymx.js"></script>

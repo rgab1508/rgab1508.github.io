@@ -7,16 +7,15 @@ let ymxPoints = [];
 let ddaPoints = [];
 let brePoints = [];
 
-let ymxCheckVal = false;
-let ddaCheckVal = true;
+
+let ymxCheckVal = true;
+let ddaCheckVal = false;
+
 let breCheckVal = false;
 
 let col; 
 
-function createPointsTable(){
-  let ymxTab = createElement('table');
-  
-}
+
 
 function calculateLine(){
   
@@ -29,7 +28,9 @@ function calculateLine(){
   console.log(ddaPoints);
   console.log(brePoints);
   
-  createPointsTable();
+
+  renderPoints();
+
 }
 
 
@@ -54,9 +55,64 @@ function renderPoints(){
       grid.pixels[el[0]][el[1]].col = col['BRE'];
     } 
   }
+ // renderPoints();
 }
 
 
+
+function createUI(){
+    let b = createButton('Calculate' );
+  b.mousePressed(calculateLine);
+  let uiBtnDiv = select('.ui_btn_div');
+  state = 'START';
+  b.addClass('btn');
+  b.addClass('black');
+  
+  b.parent(uiBtnDiv);
+  let sButton = createButton('start point');
+  sButton.addClass('btn');
+  sButton.parent(uiBtnDiv);
+    sButton.addClass('black');
+  
+  let eButton = createButton('end Point');
+  eButton.addClass('btn');
+  eButton.addClass('black');
+  eButton.parent(uiBtnDiv);
+  
+  
+  let clearButton = createButton('Clear');
+  clearButton.addClass('btn');
+  clearButton.addClass('black');
+  clearButton.parent(uiBtnDiv);
+  sButton.mousePressed(function(){
+    state='START'
+    grid.show();
+  });
+  eButton.mousePressed(function(){state='END'});
+  clearButton.mousePressed(function(){
+    grid.clear();
+  });
+  
+  let ymxCheck = document.getElementById('ymxCheck');
+  ymxCheck.checked = ymxCheckVal? 'checked': '';
+  
+  ymxCheck.onclick = function(){
+    ymxCheckVal = this.checked;
+    renderPoints();
+  }
+  let ddaCheck = document.getElementById('ddaCheck');
+  ddaCheck.checked = ddaCheckVal? 'checked': '';
+  ddaCheck.onclick = function(){
+    ddaCheckVal = this.checked;
+    renderPoints();
+  }
+  let breCheck = document.getElementById('breCheck');
+  breCheck.checked = breCheckVal? 'checked':'';
+  breCheck.onclick= function(){
+    breCheckVal = this.checked;
+    renderPoints();
+  }
+}
 
 
 function setup(){
@@ -67,51 +123,16 @@ function setup(){
      'DDA': color(0, 255, 0),
      'BRE': color(0, 0, 255),
    }
-  createCanvas(600, 600);
+  let myCanvas = createCanvas(600, 600);
+  let cnsDiv = select('.cns_div');
+  myCanvas.parent(cnsDiv);
   grid = new Grid(10, width, height);
   grid.init();
-  let b = createButton('Calculate' );
-  b.mousePressed(calculateLine);
-  state = 'START';
-  console.log(state);
-  let sButton = createButton('start point');
-  let eButton = createButton('end Point');
-  let clearButton = createButton('Clear');
-  sButton.mousePressed(function(){
-    state='START'
-    grid.show();
-  });
-  eButton.mousePressed(function(){state='END'});
-  clearButton.mousePressed(function(){
-    grid.clear();
-  });
-  
-  let ymxCheck = createCheckbox('Slope Intercept form(y=mx+b) ', ymxCheckVal);
-  let ddaCheck = createCheckbox('DDA method', ddaCheckVal);
-  let breCheck = createCheckbox('Bre method', breCheckVal);
-  ymxCheck.changed(function() {
-    if(this.checked()){
-      ymxCheckVal = true
-    }else{
-      ymxCheckVal = false;
-      
-    }
-    renderPoints();
- });
-  
-  ddaCheck.changed(function(){
-    if(this.checked()) {ddaCheckVal = true;
-    } 
-    else {ddaCheckVal = false;} 
-    renderPoints();
-  });
-  breCheck.changed(function() {
-    if (this.checked()) {
-      breCheckVal = true;
-    } 
-    else { breCheckVal = false; }
-    renderPoints();
-  });
+
+
+  createUI();
+
+    
 }
 
 

@@ -9,6 +9,8 @@ class Grid {
 			this.pixels[k] = new Array();
 		}
 	}
+	
+	
 	init(){
 		let ic=0;
 		for(let i=0;i<this.w;i+=this.step){
@@ -32,15 +34,16 @@ class Grid {
 			}
 		}
 	}
-	
+
 	clear(){
-	  for(let i=0;i<this.pixels.length;i++){
-			for(let j=0;j<this.pixels[0].length;j++){
-				this.pixels[i][j].col = 230;
-				this.pixels[i][j].show();
-			}
-		}
-	}
+    for(let i=0;i<this.pixels.length;i++){
+      for(let j=0;j<this.pixels[0].length;j++){
+        this.pixels[i][j].col = 230;
+        this.pixels[i][j].show();
+      }
+    }
+  }
+
 
 	mPressed(mx, my){
 		for(let i=0;i<this.pixels.length;i++){
