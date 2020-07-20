@@ -7,18 +7,15 @@ let ymxPoints = [];
 let ddaPoints = [];
 let brePoints = [];
 
+
 let ymxCheckVal = true;
 let ddaCheckVal = false;
+
 let breCheckVal = false;
 
 let col; 
 
-function createPointsTable(){
-  //let ymxTab = createElement('table');
-  let ptTdDiv = select('#pt_tb_div');
-  let ymxTb = createElement('table');
-  console.log(ymxTb);
-}
+
 
 function calculateLine(){
   
@@ -31,8 +28,9 @@ function calculateLine(){
   console.log(ddaPoints);
   console.log(brePoints);
   
-  
+
   renderPoints();
+
 }
 
 
@@ -130,8 +128,11 @@ function setup(){
   myCanvas.parent(cnsDiv);
   grid = new Grid(10, width, height);
   grid.init();
-  
+
+
   createUI();
+
+    
 }
 
 

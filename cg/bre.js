@@ -42,6 +42,7 @@ function bre(x1, y1, x2, y2) {
     }
   }
   return points;
+
 }
 
 function tBre(x1, y1, x2, y2){
@@ -56,3 +57,4 @@ function test(){
 }
 
 test();
+

@@ -34,6 +34,7 @@ class Grid {
 			}
 		}
 	}
+
 	clear(){
     for(let i=0;i<this.pixels.length;i++){
       for(let j=0;j<this.pixels[0].length;j++){
@@ -42,6 +43,7 @@ class Grid {
       }
     }
   }
+
 
 	mPressed(mx, my){
 		for(let i=0;i<this.pixels.length;i++){
