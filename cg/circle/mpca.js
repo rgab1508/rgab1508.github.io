@@ -16,7 +16,10 @@ function mpca(r, x0, y0){
       p=p+(2*x)+1-(2*y);
     }
   }
-  for(let pt of points){
+ 
+  points = sym8(points);
+  console.log(points);
+   for(let pt of points){
     //console.log(p);
     pt[0]+=x0;
     pt[1]+=y0;
@@ -26,7 +29,31 @@ function mpca(r, x0, y0){
 
 function sym8(points){
   //@TODO
-  return points;
+  let nPoints = [];
+  //nPoints.push(...points);
+  Array.prototype.push.apply(nPoints, points);
+  for(let p of points){
+    nPoints.push([p[1], p[0]]);
+  }
+  for(let p of points){
+    nPoints.push([-p[1], p[0]]);
+  }
+  for (let p of points) {
+    nPoints.push([-p[0], p[1]]);
+  }
+  for (let p of points) {
+    nPoints.push([-p[0], -p[1]]);
+  }
+  for (let p of points) {
+    nPoints.push([-p[1], -p[0]]);
+  }
+  for (let p of points) {
+    nPoints.push([p[1], -p[0]]);
+  }
+  for (let p of points) {
+    nPoints.push([p[0], -p[1]]);
+  }
+  return nPoints;
 }
 
 function notmpca(r, x0, y0){
