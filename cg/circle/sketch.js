@@ -32,11 +32,15 @@ function setup(){
   cButton.mousePressed(function(){
     calCirc(r, x, y);
   });
-  
+  rP = createP("r: "+r);
   rSlider = createSlider(1, 20, 1);
   rSlider.value(r);
+  
+  xP = createP("x: "+x);
   xSlider = createSlider(0, n-1);
   xSlider.value(x);
+  
+  yP = createP("y: "+y);
   ySlider = createSlider(0, n-1);
   ySlider.value(y);
   
@@ -56,10 +60,6 @@ function setup(){
     yP.html("r: " + this.value());
     grid.clear();
   });
-  
-  rP = createP("r: "+rSlider.value());
-  xP = createP("x: "+xSlider.value());
-  yP = createP("y: "+ySlider.value());
   
 }
 
