@@ -47,14 +47,31 @@ function bre(x1, y1, x2, y2) {
 
 function tBre(x1, y1, x2, y2){
   let points = [];
+  let dx = x2 - x1;
+  let dy = y2 - y1;
+  let dy2 = 2*dy;
+  let dy2dx2 = 2*dy-2*dx;
+  let p = 2*dy - dx;
+  let y = y1;
+  for(let x =x1;x<=x2;x++){
+    console.log(p,x,y);
+    points.push([x1,y1]);
+    if(p >= 0){
+      p += dy2dx2;
+      y++;
+      points.push([x, y]);
+    }else{
+      p+= dy2;
+      points.push([x, y]);
+    }
+  }
   return points;
 }
 
 function test(){
-  let points = bre(0,0,4,5);
+  let points = tBre(1,1,8,5);
   console.log(points );
   
 }
-
-test();
+//test();
 
