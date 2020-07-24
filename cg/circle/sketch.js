@@ -4,9 +4,20 @@ let n = 20;
 let x, y, r;
 
 let rSlider, xSlider, ySlider;
-
+let cButton;
 
 let rP,xP, yP;
+
+let points = [];
+
+
+function calCirc(r, x, y){
+  points = mpca(r, x, y);
+  for(let p of points){
+    grid.pixels[p[0]][p[1]].col = color(51);
+  }
+}
+
 
 function setup(){
   x=floor(n/2);
@@ -16,6 +27,11 @@ function setup(){
   background(51);
   grid = new Grid(n, width, height);
   grid.init();
+  
+  cButton = createButton('Calculate');
+  cButton.mousePressed(function(){
+    calCirc(r, x, y);
+  });
   
   rSlider = createSlider(1, 20, 1);
   rSlider.value(r);
