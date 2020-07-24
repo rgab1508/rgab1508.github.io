@@ -57,7 +57,6 @@ function mousePressed(){
 }
 
 function draw(){
-  
   grid.pixels[x][y].col = color(255, 0, 0);
   grid.show();
 }
