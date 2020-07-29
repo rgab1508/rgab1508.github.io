@@ -13,7 +13,7 @@ class Topper{
   constructor(x) { 
     this.x = x;
     this.arr = [];
-    this.speed = (Math.random() * 2)+1;
+    this.speed = (Math.random() * 2)+2;
     let y = -(Math.floor(Math.random()*150)-1);
     let n = Math.floor((nWChar + nHChar)/2)
     for(let i=0;i<n;i++){

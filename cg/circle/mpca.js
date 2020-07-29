@@ -15,6 +15,7 @@ function mpca(r, x0, y0){
       points.push([x, y]);
       p=p+(2*x)+1-(2*y);
     }
+    //console.log(p, x, y, 2*x, 2*y);
   }
  
   points = sym8(points);
@@ -28,7 +29,7 @@ function mpca(r, x0, y0){
 }
 
 function sym8(points){
-  //@TODO
+  
   let nPoints = [];
   //nPoints.push(...points);
   Array.prototype.push.apply(nPoints, points);
@@ -72,7 +73,7 @@ function notmpca(r, x0, y0){
 }
 
 function test(){
-  let p = mpca(5, 10, 10);
+  let p = mpca(8, 5, 5);
   console.log(p);
 }
 
